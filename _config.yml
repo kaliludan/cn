@@ -16,7 +16,7 @@ default_img:
 name: Kaliludan
 profile_img: 
 profile: 
-social: "http://www.weibo.com/u/1877236641"
+social:
   github: 
 
 # Build settings
