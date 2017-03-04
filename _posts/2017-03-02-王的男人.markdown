@@ -3,7 +3,7 @@ layout: post
 title: "王的男人"
 date: 2017-03-02
 categories:
-  - thoughts
+  - 思想
 description: 
 image: https://unsplash.it/2000/1200?image=1003
 image-sm: https://unsplash.it/500/300?image=1003
