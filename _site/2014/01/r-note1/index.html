@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="这是宋春林的个人独立博客，内容包括个人生活、一些评论、闲扯杂谈和专业学习等。">
+    <meta name="author" content="Kaliludan" />
+    <title>R 学习笔记（一） | Kaliludan</title>
+    <link rel="shortcut icon" href="/favicon.png">
+    <link href="http://localhost:4000/feed/" rel="alternate" title="Kaliludan" type="application/atom+xml" />
+    <link rel="stylesheet" href="/cn/media/css/style.css">
+    <link rel="stylesheet" href="/cn/media/css/highlight.css">
+    <script type="text/javascript" src="/cn/media/js/jquery-1.7.1.min.js"></script>
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1><center><a class="" href="http://localhost:4000/">北河以北</a></center></h1>  
+        </header>
+        <center> <ul class="nav pills">
+        <li><a title="主站" class="" href="http://songchunlin.net" target="_blank">主页</a></li>
+        <li><a title="文章列表" class="" href="http://localhost:4000/archive/">归档</a></li>
+        <li><a title="文章分类" class="" href="http://localhost:4000/categories/">分类</a></li>
+        <li><a title="关于我和博客" class="" href="http://localhost:4000/about/">关于</a></li>
+        <li><a title="个人简历" class="" href="http://localhost:4000/vitae/">简历</a></li>
+        <li><a title="论文著作" class="" href="http://localhost:4000/publication/">发表</a></li>
+        <li><a title="各种链接" class="" href="http://localhost:4000/links/">链接</a></li>
+
+       </ul> </center>
+
+        <article class="content">
+        <h2>
+  <center>R 学习笔记（一）</center>
+</h2>
+<h5>文/<a href="http://songchunlin.net/">宋春林</a></h5>
+<section class="post">
+<p>这是我在<a href="https://www.coursera.org/">Coursera</a>上参加的<a href="https://www.coursera.org/course/compdata">Computing for Data Analysis</a>课程Week 1的学习笔记。</p>
+
+<h2 id="一数据类型和基本操作">一、数据类型和基本操作</h2>
+
+<p>R语言基本原则：语句区分大小写；注释语句以#开头</p>
+
+<p>五类最基本对象：character，numeric，integer，complex，logical，使用class()函数可以查看对象类型；Inf在R中是存在的数，1/0=Inf，1/Inf=0；NaN，即not a number；NAs意为无意义结果 &lt;-为赋值运算符.</p>
+
+<p>as.＊可以把不同类型的变量转换为＊的类型。</p>
+
+<p>创建矩阵，dim()可以表示矩阵行列数。</p>
+
+<p>列组合（cbind）和行组合（rbind）。</p>
+
+<p>创建向量：v=c(1,3,5,7)，vector里面的量必须是同类；列表（Lists）是一类可以包含不同类型对象的向量，用[[]]表示以示区别。</p>
+
+<p>Factors被用来表示分类数据，可以有序或者无序。</p>
+
+<p>创建数据框（data frame）。</p>
+
+<p>有关丢失值（Missing values）：is.na()用来检测NA；is.nan()用来检测NaN；NA值也有类，可能是字符变量、整型等；NaN值是NA值，反之则不然。</p>
+
+<p>为R中的对象起名字。</p>
+
+<p>提取子集：[ 用来提取与原始对象同类的对象，可以选择多个元素（有例外）；[[ 可以用来提取列表（list）或者数据框（data frame）中的元素，只能用来提取单一对象；$ 可以以名称来提取列表（list）或者数据框（data frame）中的元素。</p>
+
+<p>一些常用函数：获取某函数帮助：?functionname；安装软件包：install.packages(“packagename”)；加载软件包：library(packagename)；查看属性：attributes(对象名称)​​</p>
+
+<h2 id="二矢量化操作">​二、矢量化操作</h2>
+
+<p>​许多在R中的操作经矢量化以后，会使代码更加高效、精确、易读。例子： 
+​
+​</p>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="err">\</span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="err">\</span><span class="o">-</span><span class="w"> </span><span class="m">6</span><span class="o">:</span><span class="m">9</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="kc">FALSE</span><span class="w"> </span><span class="kc">FALSE</span><span class="w"> </span><span class="kc">TRUE</span><span class="w"> </span><span class="kc">TRUE</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="kc">FALSE</span><span class="w"> </span><span class="kc">TRUE</span><span class="w"> </span><span class="kc">TRUE</span><span class="w"> </span><span class="kc">TRUE</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="kc">FALSE</span><span class="w"> </span><span class="kc">FALSE</span><span class="w"> </span><span class="kc">TRUE</span><span class="w"> </span><span class="kc">FALSE</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">36</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="m">0.1666667</span><span class="w"> </span><span class="m">0.2857143</span><span class="w"> </span><span class="m">0.3750000</span><span class="w"> </span><span class="m">0.4444444</span><span class="err">​​</span><span class="w"> </span><span class="p">[</span><span class="o">/</span><span class="n">sourcecode</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">sourcecode</span><span class="w"> </span><span class="n">language</span><span class="o">=</span><span class="s2">"plain"</span><span class="p">]</span><span class="err">​​</span><span class="w"> </span><span class="err">​​</span><span class="o">&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="err">\</span><span class="o">-</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">);</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="err">\</span><span class="o">-</span><span class="w"> </span><span class="n">matrix</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">),</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="err">##</span><span class="w"> </span><span class="err">元素相乘</span><span class="w"> </span><span class="p">[,</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">2</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="m">1</span><span class="p">,]</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="p">[</span><span class="m">2</span><span class="p">,]</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">40</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="p">[,</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">2</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="m">1</span><span class="p">,]</span><span class="w"> </span><span class="m">0.1</span><span class="w"> </span><span class="m">0.3</span><span class="w"> </span><span class="p">[</span><span class="m">2</span><span class="p">,]</span><span class="w"> </span><span class="m">0.2</span><span class="w"> </span><span class="m">0.4</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="err">##</span><span class="w"> </span><span class="err">真正的矩阵乘法</span><span class="w"> </span><span class="p">[,</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="m">2</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="m">1</span><span class="p">,]</span><span class="w"> </span><span class="m">40</span><span class="w"> </span><span class="m">40</span><span class="w"> </span><span class="p">[</span><span class="m">2</span><span class="p">,]</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="m">60</span><span class="err">​​</span><span class="w"> </span></code></pre></figure>
+
+<h2 id="三读写数据">三、读写数据</h2>
+
+<p>将数据读入R的基本函数：
+read.table, read.csv, 用于读取表格式数据
+readLines, 从文本中读取行
+source,读取R代码文件(inverse of dump)
+dget, 读取R代码文件(inverse of dput)
+load, 从保存的工作空间中读取
+unserialize, 为以二进制形式读取单一的R对象</p>
+
+<p>也有类似的将数据写入文件的函数：
+write.table；
+writeLines；
+dump；
+dput；
+save；
+serialize；</p>
+
+<p>read.table是最常用的读取数据的函数，它有几个重要的参数：
+file, 文件名称或者连接；
+header, 如果该文件有标题行，在逻辑上指出；
+sep, 一个字符串，指示如何对列分隔；
+colClasses, 指明数据集中的每列类型的特征向量；
+nrows, 数据集中的行数；
+comment.char, 表示注释字符的一个字符串；
+skip, 从开头跳过的行数；
+stringsAsFactors, 字符变量是否应该视为Factor？</p>
+
+<p>由于R是调用电脑的RAM处理数据，所以一般来讲内存越大R崩溃的可能性就越小。如果事先知道对象类型，用colClasses指明对象类型会使R运行速度快两倍。如果数据集很大，最好事先估算需要的空间。例如，有一个1500行120列的数字型的数据框，需要的最小内存为：</p>
+
+<p>\(1500000×120×8bytes/numeric=1440000000bytes=1440000000÷220bytes/MB=1373.29MB=1.34GB\)</p>
+
+<p>用readLines从网页中读取数据。</p>
+
+<p>​​用文本格式来存储数据非常好，它可编辑性、易修复、能够避免某些潜在的问题。</p>
+
+<p>一些有用的函数：summary()可以用来给出函数的基本特征；str()函数非常有用，可以查看关于对象的属性、数据集预览。</p>
+
+<p>没有弄懂的部分：dput-ting &amp; Dumping R Objects</p>
+
+</section>
+<section class="meta">
+<span class="author">
+  <a>发表于</a>
+</span>
+<span class="time">
+  
+  <time datetime="2014-01-13">2014-01-13</time>
+</span>
+<br />
+
+
+<span class="categories">
+  分类
+  
+  <a href="http://localhost:4000/categories/#学无止境" title="学无止境">学无止境</a>&nbsp;
+  
+</span>
+
+
+<span class="tags">
+  标签 
+  
+  <a href="http://localhost:4000/tags/#R" title="R">R</a>&nbsp;
+  
+  <a href="http://localhost:4000/tags/#统计学" title="统计学">统计学</a>&nbsp;
+  
+  <a href="http://localhost:4000/tags/#Coursera" title="Coursera">Coursera</a>&nbsp;
+  
+</span>
+
+</section>
+
+<section class="comment">
+
+<div id="ds-thread" class="ds-thread" data-url="/2014/01/r-note1/" data-title="R 学习笔记（一）" data-thread-key="R 学习笔记（一）" ></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"songchunlin2016"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>                          
+</section>
+    
+                                  
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    if (e.target.nodeName.toUpperCase() != 'BODY') return;
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://localhost:4000/2014/01/r-resources/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://localhost:4000/2014/01/down/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script>
+MathJax.Hub.Config({
+    tex2jax: {
+		skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+	}
+});
+MathJax.Hub.Queue(function() {
+	var all = MathJax.Hub.getAllJax(), i;
+	for(i=0; i < all.length; i += 1) {
+		all[i].SourceElement().parentNode.className += ' has-jax';
+	}
+});
+</script>
+
+        </article>
+          <div><script>
+  (function() {
+    var cx = '006295899379521077361:pwotjnjztng';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-49016899-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    </body>
+    
+<footer><p><small><center>
+              <a href="http://songchunlin.net/en" title="宋春林的英文站点" target="_blank">英文</a> :: 
+              <a href="http://www.zhihu.com/people/songcl" title="宋春林的知乎" target="_blank">知乎</a> :: 
+              <a href="http://weibo.com/songchunlin" title="宋春林的微博" target="_blank">微博</a> :: 
+              <a href="http://www.douban.com/people/iamscl/" title="宋春林的豆瓣" target="_blank">豆瓣</a> :: 
+              <a href="https://500px.com/songchunlin" title="宋春林的摄影相册" target="_blank">500px</a> :: 
+              <a href="https://github.com/songchunlin" title="宋春林的 GitHub" target="_blank">GitHub</a> :: 
+              <a href="https://www.researchgate.net/profile/Chunlin_Song4" title="宋春林的 ResearchGate" target="_blank">ResearchGate</a> ::
+              <a href="http://songchunlin.net/cn/feed/" title="RSS 订阅" target="_blank" >RSS</a>
+            </center></small></p>
+</footer>
+</html>

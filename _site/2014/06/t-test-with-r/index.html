@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="这是宋春林的个人独立博客，内容包括个人生活、一些评论、闲扯杂谈和专业学习等。">
+    <meta name="author" content="Kaliludan" />
+    <title>用 R 做 t 检验 | Kaliludan</title>
+    <link rel="shortcut icon" href="/favicon.png">
+    <link href="http://localhost:4000/feed/" rel="alternate" title="Kaliludan" type="application/atom+xml" />
+    <link rel="stylesheet" href="/cn/media/css/style.css">
+    <link rel="stylesheet" href="/cn/media/css/highlight.css">
+    <script type="text/javascript" src="/cn/media/js/jquery-1.7.1.min.js"></script>
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1><center><a class="" href="http://localhost:4000/">北河以北</a></center></h1>  
+        </header>
+        <center> <ul class="nav pills">
+        <li><a title="主站" class="" href="http://songchunlin.net" target="_blank">主页</a></li>
+        <li><a title="文章列表" class="" href="http://localhost:4000/archive/">归档</a></li>
+        <li><a title="文章分类" class="" href="http://localhost:4000/categories/">分类</a></li>
+        <li><a title="关于我和博客" class="" href="http://localhost:4000/about/">关于</a></li>
+        <li><a title="个人简历" class="" href="http://localhost:4000/vitae/">简历</a></li>
+        <li><a title="论文著作" class="" href="http://localhost:4000/publication/">发表</a></li>
+        <li><a title="各种链接" class="" href="http://localhost:4000/links/">链接</a></li>
+
+       </ul> </center>
+
+        <article class="content">
+        <h2>
+  <center>用 R 做 t 检验</center>
+</h2>
+<h5>文/<a href="http://songchunlin.net/">宋春林</a></h5>
+<section class="post">
+<p>研究者对研究对象总体按一定方法抽样，为了尽可能准确地根据这一样本的参数估计总体，验证某些假设，这就需要用到假设检验，而t检验就是假设检验中最常用的一种检验方法，可以通过R软件非常方便地实现。</p>
+
+<p>第一种情况是单样本t检验（one sample t-test），目的是检验一个正态分布的总体均值是否满足零假设的已知均值。例如：已知A地家蝇翅膀长度均值47mm，为研究B地家蝇翅膀长度和A地有无差异，随机抽取B地100只家蝇，测量其翅膀长度。注意，研究对象是B地所有的家蝇，这个数目是远大于100的，如果直接把这100只的数据平均然后比较是不准确的，统计学上用T检验解决了这个问题。已知B地家蝇翅膀长度符合正态分布，样本符合随机原则。零假设H0：μ=47，即B地家蝇翅膀长度与A地一致；备择假设Ha：μ≠47，即B地家蝇翅膀长度与A地不一致，显著性水平α为0.05。R下的做法是：</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="w"> 
+</span><span class="n">wl</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">36</span><span class="p">,</span><span class="m">37</span><span class="p">,</span><span class="m">38</span><span class="p">,</span><span class="m">38</span><span class="p">,</span><span class="m">39</span><span class="p">,</span><span class="m">39</span><span class="p">,</span><span class="m">40</span><span class="p">,</span><span class="m">40</span><span class="p">,</span><span class="m">40</span><span class="p">,</span><span class="m">40</span><span class="p">,</span><span class="m">41</span><span class="p">,</span><span class="m">41</span><span class="p">,</span><span class="m">41</span><span class="p">,</span><span class="m">41</span><span class="p">,</span><span class="m">41</span><span class="p">,</span><span class="m">41</span><span class="p">,</span><span class="m">42</span><span class="p">,</span><span class="m">42</span><span class="p">,</span><span class="m">42</span><span class="p">,</span><span class="m">42</span><span class="p">,</span><span class="m">42</span><span class="p">,</span><span class="m">42</span><span class="p">,</span><span class="m">42</span><span class="p">,</span><span class="m">43</span><span class="p">,</span><span class="m">43</span><span class="p">,</span><span class="m">43</span><span class="p">,</span><span class="m">43</span><span class="p">,</span><span class="m">43</span><span class="p">,</span><span class="m">43</span><span class="p">,</span><span class="m">43</span><span class="p">,</span><span class="m">43</span><span class="p">,</span><span class="m">44</span><span class="p">,</span><span class="m">44</span><span class="p">,</span><span class="m">44</span><span class="p">,</span><span class="m">44</span><span class="p">,</span><span class="m">44</span><span class="p">,</span><span class="m">44</span><span class="p">,</span><span class="m">44</span><span class="p">,</span><span class="m">44</span><span class="p">,</span><span class="m">44</span><span class="p">,</span><span class="m">45</span><span class="p">,</span><span class="m">45</span><span class="p">,</span><span class="m">45</span><span class="p">,</span><span class="m">45</span><span class="p">,</span><span class="m">45</span><span class="p">,</span><span class="m">45</span><span class="p">,</span><span class="m">45</span><span class="p">,</span><span class="m">45</span><span class="p">,</span><span class="m">45</span><span class="p">,</span><span class="m">45</span><span class="p">,</span><span class="m">46</span><span class="p">,</span><span class="m">46</span><span class="p">,</span><span class="m">46</span><span class="p">,</span><span class="m">46</span><span class="p">,</span><span class="m">46</span><span class="p">,</span><span class="m">46</span><span class="p">,</span><span class="m">46</span><span class="p">,</span><span class="m">46</span><span class="p">,</span><span class="m">46</span><span class="p">,</span><span class="m">46</span><span class="p">,</span><span class="m">47</span><span class="p">,</span><span class="m">47</span><span class="p">,</span><span class="m">47</span><span class="p">,</span><span class="m">47</span><span class="p">,</span><span class="m">47</span><span class="p">,</span><span class="m">47</span><span class="p">,</span><span class="m">47</span><span class="p">,</span><span class="m">47</span><span class="p">,</span><span class="m">47</span><span class="p">,</span><span class="m">48</span><span class="p">,</span><span class="m">48</span><span class="p">,</span><span class="m">48</span><span class="p">,</span><span class="m">48</span><span class="p">,</span><span class="m">48</span><span class="p">,</span><span class="m">48</span><span class="p">,</span><span class="m">48</span><span class="p">,</span><span class="m">48</span><span class="p">,</span><span class="m">49</span><span class="p">,</span><span class="m">49</span><span class="p">,</span><span class="m">49</span><span class="p">,</span><span class="m">49</span><span class="p">,</span><span class="m">49</span><span class="p">,</span><span class="m">49</span><span class="p">,</span><span class="m">49</span><span class="p">,</span><span class="m">50</span><span class="p">,</span><span class="m">50</span><span class="p">,</span><span class="m">50</span><span class="p">,</span><span class="m">50</span><span class="p">,</span><span class="m">50</span><span class="p">,</span><span class="m">50</span><span class="p">,</span><span class="m">51</span><span class="p">,</span><span class="m">51</span><span class="p">,</span><span class="m">51</span><span class="p">,</span><span class="m">51</span><span class="p">,</span><span class="m">52</span><span class="p">,</span><span class="m">52</span><span class="p">,</span><span class="m">53</span><span class="p">,</span><span class="m">53</span><span class="p">,</span><span class="m">54</span><span class="p">,</span><span class="m">55</span><span class="p">)</span><span class="w"> 
+</span><span class="n">t.test</span><span class="p">(</span><span class="n">wl</span><span class="p">,</span><span class="w"> </span><span class="n">mu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">47</span><span class="p">,</span><span class="w"> </span><span class="n">var.equal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span><span class="w"> 
+</span><span class="o">&gt;</span><span class="n">One</span><span class="w"> </span><span class="n">Sample</span><span class="w"> </span><span class="n">t</span><span class="o">-</span><span class="n">test</span><span class="w"> </span><span class="n">data</span><span class="o">:</span><span class="w"> </span><span class="n">wl</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-3.8269</span><span class="p">,</span><span class="w"> </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">99</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="o">-</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.0002274</span><span class="w"> </span><span class="n">alternative</span><span class="w"> </span><span class="n">hypothesis</span><span class="o">:</span><span class="w"> </span><span class="n">true</span><span class="w"> </span><span class="n">mean</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">equal</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="m">47</span><span class="w"> </span><span class="m">95</span><span class="w"> </span><span class="n">percent</span><span class="w"> </span><span class="n">confidence</span><span class="w"> </span><span class="n">interval</span><span class="o">:</span><span class="w"> </span><span class="m">44.72226</span><span class="w"> </span><span class="m">46.27774</span><span class="w"> </span><span class="n">sample</span><span class="w"> </span><span class="n">estimates</span><span class="o">:</span><span class="w"> </span><span class="n">mean</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="m">45.5</span><span class="w"> </span></code></pre></figure>
+
+<p>从上述结果可以看出，基于100个样本的p-value = 0.0002274 &lt; 0.05，因此有充足的理由拒绝H0假设，即B地家蝇翅膀长度与A地不一致，95%置信区间为（44.72226,46.27774），B地家蝇翅膀长度比A地短。</p>
+
+<p>第二种情况是两样本t检验（two-sample t-test），目的是检验两个正态分布的总体均值之间是否有差异（是否相等）。例如：为验证1和2两地家蝇翅膀长度是否有差异，随机在1和2两地抽取家蝇，测量翅膀长度，一共40个样本，数字特征分别为μ1和μ2。零假设H0：μ1=μ2，即两地家蝇翅膀长度无显著差异；备择假设Ha：μ1≠μ2，即两地家蝇翅膀长度有显著差异，显著性水平α为0.05。R下的做法是：</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="w"> 
+</span><span class="n">lines</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"ID length site\n1 45 1\n2 44 1\n3 45 2\n4 43 1\n5 48 2\n6 47 2\n7 47 1\n8 48 1\n9 43 2\n10 44 1\n11 46 2\n12 46 1\n13 44 1\n14 47 2\n15 40 1\n16 48 2\n17 45 1\n18 46 2\n19 42 1\n20 43 2\n21 40 1\n22 43 1\n23 49 2\n24 46 1\n25 47 1\n26 46 2\n27 43 2\n28 45 1\n29 46 1\n30 47 2\n31 46 2\n32 47 2\n33 45 1\n34 46 2\n35 43 1\n36 45 2\n37 44 1\n38 46 2\n39 44 2\n40 45 2"</span><span class="w"> </span><span class="n">wl</span><span class="w"> </span><span class="o">&lt;</span><span class="err">\</span><span class="o">-</span><span class="w"> </span><span class="n">read.table</span><span class="p">(</span><span class="n">con</span><span class="w"> </span><span class="o">&lt;</span><span class="err">\</span><span class="o">-</span><span class="w"> </span><span class="n">textConnection</span><span class="p">(</span><span class="n">lines</span><span class="p">),</span><span class="w"> </span><span class="n">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w"> 
+</span><span class="n">close</span><span class="p">(</span><span class="n">con</span><span class="p">)</span><span class="w">
+</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wl</span><span class="p">[</span><span class="n">wl</span><span class="o">$</span><span class="n">site</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">]</span><span class="w"> 
+</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wl</span><span class="p">[</span><span class="n">wl</span><span class="o">$</span><span class="n">site</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">]</span><span class="w">  
+</span><span class="n">shapiro.test</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> 
+</span><span class="n">bartlett.test</span><span class="p">(</span><span class="n">length</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">site</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wl</span><span class="p">)</span><span class="w"> 
+</span><span class="n">t.test</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span></code></pre></figure>
+
+<p>基于1和2个地点t检验的p-value = 0.01874 &lt; 0.05，因此拒绝H0假设，即认为两地地家蝇翅膀长度有显著差异。</p>
+
+<p>第三种情况是配对t检验或称重复测量t检验（ “paired” or “repeated measures” t-test），用于检验同一统计量的两次测量值之间的差异是否为零。例如测量病人治疗前和治疗后的某种指标水平，检验其差异是否显著；或者要比较同一河流上下游两地污染情况，同一指标在上下游各测量一次，共有N个指标，这都要用到配对T检验。R中配对t检验的代码为t.test(x, y, paired=TRUE)，x和y为两组变量。懒得找数据举具体例子了。</p>
+
+<h2 id="comments">Comments</h2>
+
+<p><strong><a href="#41794" title="2015-08-26 12:26:31">simon</a>:</strong> 请问你的例子不是都是2 tail 的么？那么不是p-value 应该和0.025比较么 我是初学者，想请教一下你。 thx。</p>
+
+<p><strong><a href="#42023" title="2015-09-01 13:37:25">宋春林</a>:</strong> 你说得对，双尾检验 <em>P</em> 值应该是和0.025比较，谢谢指出。</p>
+
+<p><strong><a href="#47473" title="2015-12-31 05:43:17">苹果姐姐</a>:</strong> 通过搜索看到您的两篇R的文章，说明简洁清晰，例子也用的很好，正好适合我这种知其然不知其所以然还要给人家讲R的统计学应用的半吊子，非常感谢，期待更多</p>
+
+<p><strong><a href="#86783" title="2016-05-05 15:00:20">ZhaoJie</a>:</strong> 请问双侧检验P值与0.025比较，但显著水平还是0.05，是这样吗？</p>
+
+
+</section>
+<section class="meta">
+<span class="author">
+  <a>发表于</a>
+</span>
+<span class="time">
+  
+  <time datetime="2014-06-05">2014-06-05</time>
+</span>
+<br />
+
+
+<span class="categories">
+  分类
+  
+  <a href="http://localhost:4000/categories/#学无止境" title="学无止境">学无止境</a>&nbsp;
+  
+</span>
+
+
+<span class="tags">
+  标签 
+  
+  <a href="http://localhost:4000/tags/#R" title="R">R</a>&nbsp;
+  
+  <a href="http://localhost:4000/tags/#统计学" title="统计学">统计学</a>&nbsp;
+  
+  <a href="http://localhost:4000/tags/#t 检验" title="t 检验">t 检验</a>&nbsp;
+  
+</span>
+
+</section>
+
+<section class="comment">
+
+<div id="ds-thread" class="ds-thread" data-url="/2014/06/t-test-with-r/" data-title="用 R 做 t 检验" data-thread-key="用 R 做 t 检验" ></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"songchunlin2016"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>                          
+</section>
+    
+                                  
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    if (e.target.nodeName.toUpperCase() != 'BODY') return;
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://localhost:4000/2014/06/a-bite-of-china/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://localhost:4000/2014/06/edge-of-tomorrow/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script>
+MathJax.Hub.Config({
+    tex2jax: {
+		skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+	}
+});
+MathJax.Hub.Queue(function() {
+	var all = MathJax.Hub.getAllJax(), i;
+	for(i=0; i < all.length; i += 1) {
+		all[i].SourceElement().parentNode.className += ' has-jax';
+	}
+});
+</script>
+
+        </article>
+          <div><script>
+  (function() {
+    var cx = '006295899379521077361:pwotjnjztng';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-49016899-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    </body>
+    
+<footer><p><small><center>
+              <a href="http://songchunlin.net/en" title="宋春林的英文站点" target="_blank">英文</a> :: 
+              <a href="http://www.zhihu.com/people/songcl" title="宋春林的知乎" target="_blank">知乎</a> :: 
+              <a href="http://weibo.com/songchunlin" title="宋春林的微博" target="_blank">微博</a> :: 
+              <a href="http://www.douban.com/people/iamscl/" title="宋春林的豆瓣" target="_blank">豆瓣</a> :: 
+              <a href="https://500px.com/songchunlin" title="宋春林的摄影相册" target="_blank">500px</a> :: 
+              <a href="https://github.com/songchunlin" title="宋春林的 GitHub" target="_blank">GitHub</a> :: 
+              <a href="https://www.researchgate.net/profile/Chunlin_Song4" title="宋春林的 ResearchGate" target="_blank">ResearchGate</a> ::
+              <a href="http://songchunlin.net/cn/feed/" title="RSS 订阅" target="_blank" >RSS</a>
+            </center></small></p>
+</footer>
+</html>

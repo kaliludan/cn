@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="这是宋春林的个人独立博客，内容包括个人生活、一些评论、闲扯杂谈和专业学习等。">
+    <meta name="author" content="Kaliludan" />
+    <title>有机碳分解与水力停留时间 | Kaliludan</title>
+    <link rel="shortcut icon" href="/favicon.png">
+    <link href="http://localhost:4000/feed/" rel="alternate" title="Kaliludan" type="application/atom+xml" />
+    <link rel="stylesheet" href="/cn/media/css/style.css">
+    <link rel="stylesheet" href="/cn/media/css/highlight.css">
+    <script type="text/javascript" src="/cn/media/js/jquery-1.7.1.min.js"></script>
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1><center><a class="" href="http://localhost:4000/">北河以北</a></center></h1>  
+        </header>
+        <center> <ul class="nav pills">
+        <li><a title="主站" class="" href="http://songchunlin.net" target="_blank">主页</a></li>
+        <li><a title="文章列表" class="" href="http://localhost:4000/archive/">归档</a></li>
+        <li><a title="文章分类" class="" href="http://localhost:4000/categories/">分类</a></li>
+        <li><a title="关于我和博客" class="" href="http://localhost:4000/about/">关于</a></li>
+        <li><a title="个人简历" class="" href="http://localhost:4000/vitae/">简历</a></li>
+        <li><a title="论文著作" class="" href="http://localhost:4000/publication/">发表</a></li>
+        <li><a title="各种链接" class="" href="http://localhost:4000/links/">链接</a></li>
+
+       </ul> </center>
+
+        <article class="content">
+        <h2>
+  <center>有机碳分解与水力停留时间</center>
+</h2>
+<h5>文/<a href="http://songchunlin.net/">宋春林</a></h5>
+<section class="post">
+<p>昨天闲逛 Nature 网站的时候发现了一篇有意思的文章：<a href="http://www.nature.com/ngeo/journal/vaop/ncurrent/full/ngeo2720.html">Organic carbon decomposition rates controlled by water retention time across inland waters</a>。这篇文章的主要结论是水体有机碳分解的速率与水力停留时间（water retention time）成反比，陆地水体有机碳的半衰期（2.5 ± 4.7年）比土壤和海洋中的有机碳要短。看到这篇文章我很兴奋，这个研究对我的博士论文目前正在做的工作有很大的启发，值得仔细研读。</p>
+
+<p>陆地土壤圈中的有机碳通过河流输送到海洋，这是全球碳循环中重要的一环，但是由于有机碳分解速率一直缺少合适的预测变量，全球尺度下有机碳在水体运输的过程中究竟有多少矿化、分解、转变为气态含碳物质进入大气是不清楚的，这就是为什么需要研究影响有机碳分解速率的因子。</p>
+
+<p>作者研究的尺度是全球尺度，绝大部分数据来自于各种文献，一共搜集了315条关于有机碳分解和相应的水力停留时间的数据。既包括室内实验的数据，也有野外观测的数据。通过简单的最小二乘法相关分析，作者得出了有机碳分解与水体保留时间的统计模型：</p>
+
+<p>\(logk = -4.5 (\pm 0.08) log WRT − 0.96 (\pm 0.03) (r^{2} = 0.41; p &lt; 0.001; n = 315)\)</p>
+
+<p>式中 k 为有机碳分解速率（文章中有具体定义，搜集的文献中未给出时利用碳平衡数据计算出来并用一个与温度有关的 Arrhenius 函数校正），WRT 为水力停留时间。这个模型表明水力停留时间越长，有机碳分解速率越低。</p>
+
+<p>首先要明确一个概念，什么是水力停留时间（water retention time，WRT）？文章中是如此定义的：在静水系统中，水力停留时间等于水体总量除以水体流出的速率；在流动水体系统中，水力停留时间为河流长度与流速的比值。比较好理解，也就是一个闭合水体系统中水体更新所用的时间。对于河流水体，WRT 这个参数在收集的文献中没有给出时则通过 QGIS 估算的河长和曼宁公式估算的流速计算出来。对于静水的 WRT，作者用了 GRanD 和 GLWD 这两个数据库分别估算水库和湖泊的 WRT。</p>
+
+<p>为什么水力停留时间越长，有机碳分解速率越慢？作者是这样解释的：在有机碳矿化（即有机碳通过分解或氧化转变为无机碳的形式）过程中，有机碳的成分会改变，降解慢的成分随着水力停留时间的增加而富集，影响了下游连续体的有机碳反应速率。对于水力停留时间较短的水体，有机碳物质比较新鲜，因而有更快的矿化速率。当水力停留时间超过一年时，分解速率受到的影响非常有限。</p>
+
+<p>此外，文章还模拟了全球气温增加2摄氏度的情况下水文参数对有机碳分解的影响，并对水力停留时间无法解释的部分进行了分析。</p>
+
+</section>
+<section class="meta">
+<span class="author">
+  <a>发表于</a>
+</span>
+<span class="time">
+  
+  <time datetime="2016-05-26">2016-05-26</time>
+</span>
+<br />
+
+
+<span class="categories">
+  分类
+  
+  <a href="http://localhost:4000/categories/#学术科研" title="学术科研">学术科研</a>&nbsp;
+  
+</span>
+
+
+<span class="tags">
+  标签 
+  
+  <a href="http://localhost:4000/tags/#有机碳" title="有机碳">有机碳</a>&nbsp;
+  
+  <a href="http://localhost:4000/tags/#Nature" title="Nature">Nature</a>&nbsp;
+  
+</span>
+
+</section>
+
+<section class="comment">
+
+<div id="ds-thread" class="ds-thread" data-url="/2016/05/organic-carbon-and-water-retention-time/" data-title="有机碳分解与水力停留时间" data-thread-key="有机碳分解与水力停留时间" ></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"songchunlin2016"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>                          
+</section>
+    
+                                  
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    if (e.target.nodeName.toUpperCase() != 'BODY') return;
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://localhost:4000/2016/05/first-sci-paper/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://localhost:4000/2016/06/life-in-fenghuo-mountain/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script>
+MathJax.Hub.Config({
+    tex2jax: {
+		skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+	}
+});
+MathJax.Hub.Queue(function() {
+	var all = MathJax.Hub.getAllJax(), i;
+	for(i=0; i < all.length; i += 1) {
+		all[i].SourceElement().parentNode.className += ' has-jax';
+	}
+});
+</script>
+
+        </article>
+          <div><script>
+  (function() {
+    var cx = '006295899379521077361:pwotjnjztng';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-49016899-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    </body>
+    
+<footer><p><small><center>
+              <a href="http://songchunlin.net/en" title="宋春林的英文站点" target="_blank">英文</a> :: 
+              <a href="http://www.zhihu.com/people/songcl" title="宋春林的知乎" target="_blank">知乎</a> :: 
+              <a href="http://weibo.com/songchunlin" title="宋春林的微博" target="_blank">微博</a> :: 
+              <a href="http://www.douban.com/people/iamscl/" title="宋春林的豆瓣" target="_blank">豆瓣</a> :: 
+              <a href="https://500px.com/songchunlin" title="宋春林的摄影相册" target="_blank">500px</a> :: 
+              <a href="https://github.com/songchunlin" title="宋春林的 GitHub" target="_blank">GitHub</a> :: 
+              <a href="https://www.researchgate.net/profile/Chunlin_Song4" title="宋春林的 ResearchGate" target="_blank">ResearchGate</a> ::
+              <a href="http://songchunlin.net/cn/feed/" title="RSS 订阅" target="_blank" >RSS</a>
+            </center></small></p>
+</footer>
+</html>

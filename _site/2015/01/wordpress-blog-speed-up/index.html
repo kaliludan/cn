@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="这是宋春林的个人独立博客，内容包括个人生活、一些评论、闲扯杂谈和专业学习等。">
+    <meta name="author" content="Kaliludan" />
+    <title>提高 WordPress 博客访问速度 | Kaliludan</title>
+    <link rel="shortcut icon" href="/favicon.png">
+    <link href="http://localhost:4000/feed/" rel="alternate" title="Kaliludan" type="application/atom+xml" />
+    <link rel="stylesheet" href="/cn/media/css/style.css">
+    <link rel="stylesheet" href="/cn/media/css/highlight.css">
+    <script type="text/javascript" src="/cn/media/js/jquery-1.7.1.min.js"></script>
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1><center><a class="" href="http://localhost:4000/">北河以北</a></center></h1>  
+        </header>
+        <center> <ul class="nav pills">
+        <li><a title="主站" class="" href="http://songchunlin.net" target="_blank">主页</a></li>
+        <li><a title="文章列表" class="" href="http://localhost:4000/archive/">归档</a></li>
+        <li><a title="文章分类" class="" href="http://localhost:4000/categories/">分类</a></li>
+        <li><a title="关于我和博客" class="" href="http://localhost:4000/about/">关于</a></li>
+        <li><a title="个人简历" class="" href="http://localhost:4000/vitae/">简历</a></li>
+        <li><a title="论文著作" class="" href="http://localhost:4000/publication/">发表</a></li>
+        <li><a title="各种链接" class="" href="http://localhost:4000/links/">链接</a></li>
+
+       </ul> </center>
+
+        <article class="content">
+        <h2>
+  <center>提高 WordPress 博客访问速度</center>
+</h2>
+<h5>文/<a href="http://songchunlin.net/">宋春林</a></h5>
+<section class="post">
+<p>WordPress 博客访问慢，原因可能有很多，比如主机性能、网站内容、Google 被墙等。前两个好理解，主机性能越强、网站插件越少、内容越小访问就越快，之所以和 Google 有关是因为WordPress 默认调用了Google 公共库和 Google 字体库，而在中国大陆 Google 是被封的，所以默认情况下在国内打开 WordPress 博客就是慢。</p>
+
+<p>对于前两种因素，有钱的可以买更高性能的主机，然后优化网站的插件、内容和代码，从而改善访问速度。对于 Google 的问题也是可以解决的。这要感谢360公司，提供了 <a href="http://libs.useso.com/">Google 公共库和字体库的镜像</a>。我不用360的任何产品，对其也没有什么好感，但是这件事360做得很好，点赞。使用方法是把 WordPress文件中的fonts.googleapis.com 和ajax.googleapis.com分别换成 fonts.useso.com 和 ajax.useso.com，具体方法请点<a href="http://wpchina.org/how-to-use-360-mirrors-cdn-to-speed-up-your-wordpress-1564/">此处</a>。</p>
+
+<p>经过以上几步，博客访问速度应该提升了很多，但是还可以使用 CDN 加速功能使其速度更快。七牛云提供了 10GB 每月的免费加速流量，对于普通博主来讲够了。具体方法参见<a href="https://tumutanzi.com/archives/12128">这里</a>。</p>
+
+<p>我的博客经过上述设置之后，自我感觉访问速度快了很多，不知道你有没有感觉到？</p>
+
+<h2 id="comments">Comments</h2>
+
+<p><strong><a href="#28097" title="2015-01-13 09:23:41">vicky</a>:</strong> 感觉到了，速度的确很快！ 很喜欢你博客的界面，简洁，让人读文字时很容易focus。如果我也开博客，能模仿or抄袭你的界面吗？哈哈！ 看了好几篇文章，觉得你写的很好，独立博客的态度和坚持更博的毅力也让人钦佩。 支持你！</p>
+
+<p><strong><a href="#28103" title="2015-01-13 09:49:24">宋春林</a>:</strong> 谢谢。 可以用我的博客界面，代码在<a href="https://github.com/songchunlin/My_WP_Theme">这里</a>。</p>
+
+<p><strong><a href="#33498" title="2015-03-07 01:15:41">Riophae</a>:</strong> 现在很快，没有问题</p>
+
+<p><strong><a href="#33541" title="2015-03-07 10:58:51">宋春林</a>:</strong> 你的博客看起来很清爽。</p>
+
+
+</section>
+<section class="meta">
+<span class="author">
+  <a>发表于</a>
+</span>
+<span class="time">
+  
+  <time datetime="2015-01-05">2015-01-05</time>
+</span>
+<br />
+
+
+<span class="categories">
+  分类
+  
+  <a href="http://localhost:4000/categories/#器物杂谈" title="器物杂谈">器物杂谈</a>&nbsp;
+  
+</span>
+
+
+<span class="tags">
+  标签 
+  
+  <a href="http://localhost:4000/tags/#博客" title="博客">博客</a>&nbsp;
+  
+  <a href="http://localhost:4000/tags/#WordPress" title="WordPress">WordPress</a>&nbsp;
+  
+</span>
+
+</section>
+
+<section class="comment">
+
+<div id="ds-thread" class="ds-thread" data-url="/2015/01/wordpress-blog-speed-up/" data-title="提高 WordPress 博客访问速度" data-thread-key="提高 WordPress 博客访问速度" ></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"songchunlin2016"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>                          
+</section>
+    
+                                  
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    if (e.target.nodeName.toUpperCase() != 'BODY') return;
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://localhost:4000/2014/12/my-2014/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://localhost:4000/2015/01/talk-about-gpa/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script>
+MathJax.Hub.Config({
+    tex2jax: {
+		skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+	}
+});
+MathJax.Hub.Queue(function() {
+	var all = MathJax.Hub.getAllJax(), i;
+	for(i=0; i < all.length; i += 1) {
+		all[i].SourceElement().parentNode.className += ' has-jax';
+	}
+});
+</script>
+
+        </article>
+          <div><script>
+  (function() {
+    var cx = '006295899379521077361:pwotjnjztng';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-49016899-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    </body>
+    
+<footer><p><small><center>
+              <a href="http://songchunlin.net/en" title="宋春林的英文站点" target="_blank">英文</a> :: 
+              <a href="http://www.zhihu.com/people/songcl" title="宋春林的知乎" target="_blank">知乎</a> :: 
+              <a href="http://weibo.com/songchunlin" title="宋春林的微博" target="_blank">微博</a> :: 
+              <a href="http://www.douban.com/people/iamscl/" title="宋春林的豆瓣" target="_blank">豆瓣</a> :: 
+              <a href="https://500px.com/songchunlin" title="宋春林的摄影相册" target="_blank">500px</a> :: 
+              <a href="https://github.com/songchunlin" title="宋春林的 GitHub" target="_blank">GitHub</a> :: 
+              <a href="https://www.researchgate.net/profile/Chunlin_Song4" title="宋春林的 ResearchGate" target="_blank">ResearchGate</a> ::
+              <a href="http://songchunlin.net/cn/feed/" title="RSS 订阅" target="_blank" >RSS</a>
+            </center></small></p>
+</footer>
+</html>

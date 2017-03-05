@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="这是宋春林的个人独立博客，内容包括个人生活、一些评论、闲扯杂谈和专业学习等。">
+    <meta name="author" content="Kaliludan" />
+    <title>大修博客主题 | Kaliludan</title>
+    <link rel="shortcut icon" href="/favicon.png">
+    <link href="http://localhost:4000/feed/" rel="alternate" title="Kaliludan" type="application/atom+xml" />
+    <link rel="stylesheet" href="/cn/media/css/style.css">
+    <link rel="stylesheet" href="/cn/media/css/highlight.css">
+    <script type="text/javascript" src="/cn/media/js/jquery-1.7.1.min.js"></script>
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1><center><a class="" href="http://localhost:4000/">北河以北</a></center></h1>  
+        </header>
+        <center> <ul class="nav pills">
+        <li><a title="主站" class="" href="http://songchunlin.net" target="_blank">主页</a></li>
+        <li><a title="文章列表" class="" href="http://localhost:4000/archive/">归档</a></li>
+        <li><a title="文章分类" class="" href="http://localhost:4000/categories/">分类</a></li>
+        <li><a title="关于我和博客" class="" href="http://localhost:4000/about/">关于</a></li>
+        <li><a title="个人简历" class="" href="http://localhost:4000/vitae/">简历</a></li>
+        <li><a title="论文著作" class="" href="http://localhost:4000/publication/">发表</a></li>
+        <li><a title="各种链接" class="" href="http://localhost:4000/links/">链接</a></li>
+
+       </ul> </center>
+
+        <article class="content">
+        <h2>
+  <center>大修博客主题</center>
+</h2>
+<h5>文/<a href="http://songchunlin.net/">宋春林</a></h5>
+<section class="post">
+<p>我这个博客从建好到现在一直都是用的<a href="http://wordpress.org/themes/twentytwelve">Twenty Twelve</a>这个主题，一开始主要是看中它淡雅简洁的风格。今天我又把简洁发挥到极致，一口气去掉了一大堆东西，看起来总算是比较满意了。</p>
+
+<p>Twenty Twelve是WordPress官方2012年出的主题，但是现在基本被我改的面目全非了，跟原来相比主要变化如下：</p>
+
+<p>去掉了边栏。直接在“外观-小工具”里移除了主页边栏的所有小工具，然后文章界面就自动填充到全部页面。比我想象的简单，我以为还要设置float什么的才能让文章界面铺满页面。</p>
+
+<p>主页标题、菜单、文章标题以及底部的居中。这个设置比较简单，在style.css相应的header、nav、entry、footer里加上text-align: center语句就可以了。</p>
+
+<p>去掉了除文章内部外的所有链接的下划线。在style.css里的body和footer里使用text-decoration: none语句来实现。</p>
+
+<p>背景改成白色，这样看起来整个页面和背景融合在一起，视觉上比较统一。</p>
+
+<p>添加文章归档页面。之前的边栏里有按月份归档的小工具，但是现在边栏移除了，所以只能通过页面来实现。在网上搜了一下教程，都太麻烦，要动用模板函数在内的好几个地方才能实现。偶然发现<a href="http://zenhabits.net/archives/">Zen Habits的归档页</a>很对我的胃口，于是有了移植的想法。在Google里面搜“how to create an archives page in wordpress like zenhabits”，搜索结果直接把我带到Zen Habits介绍安装其主题的<a href="http://zenhabits.net/install/">页面</a>。我可不想整套安装它的主题，我只想建立文章归档页而已。于是下载其<a href="http://zenhabits.net/theme/">zh2主题</a>，把archives.php里的代码稍作修改，直接替代我目前主题里面的archive.php；然后新建页面，选择归档模板，归档页面就初步建好了。还想在这个页面显示标签，用了一条非常简单的语句就实现了：</p>
+
+<blockquote>
+  <?php wp_tag_cloud('number=0'); ?>
+</blockquote>
+
+<p>除了上面所做的修改，还增加了主页标题的字号、加深了文章字体颜色（#444444到#303030）、页面宽度变窄（960px到720px）、首选字体改为微软雅黑、去掉了文章标题下的“添加评论”字样、修改了引用样式、增加了底部的内容等。</p>
+
+<p>一路折腾下来，我感觉CSS语言还是比较简单的，大部分近于英语的自然语言，比如margin是调整间距，float调整页面位置，居中就用center……不过，我并不打算学这门语言，我的博客外观估计就是这个样子，所以也不会有更多的折腾了。接下来，就是专注写博客了。</p>
+
+<p>修改的过程再一次加深了我对Google（google.com）的印象。一开始用百度搜中文，不仅精准度差，而且内容少、重复多。后来直接换Google，搜英文，一搜一个准。以后要查什么东西，一定用英文在Google里搜一下，不然很有可能错过很多好东西。我是越来越喜欢英语了，通过英语总能发现更多精彩的东西。我主页上的推荐页面里有两个英文博客就是我经常看的，浏览器书签里也有一些专业博客。但是我依然讨厌英语考试，考试让英语变得没意思。</p>
+
+<p>经过了这些修改，页面看起来清爽多了，除了白色的背景就是文字，没有过多干扰阅读的元素。我觉得这样才是我想要的博客，把核心的阅读功能发挥到最好，该有的功能比如查看历史文章、我的联系方式等也都通过顶部菜单和底部实现了。其实我挺不想去掉原来的虾米音乐播放器的，我常常打开自己的博客就是用这个播放器听听歌。但是为了简洁，我还是妥协了，毕竟除了我基本没人来这里听歌，我自己还可以直接去虾米个人主页听。评论目前还保留，但是我很想去掉评论，一是影响阅读体验，二是我很怀疑大部分人的阅读理解能力因而不相信这部分人的评论是有意义的，三是短短几十字或者上百字的评论大部分情况下并不能说清楚一件事。之所以保留，是因为现在我的博客还基本没有什么人看，“大部分人”还没有出现。</p>
+
+<p>我这个博客，主要就是写写我的个人生活和我关注的一些东西，不想做得非常专业；即使有机会应该也不会在主页上挂广告，影响美观。我甚至也不想写成一个人人都喜欢看的博客。我觉得孙尉翔老师那样的博客就挺好，自由自在写自己的东西。认真写博客本身就是一件可以带来快乐的事情，所以我不太理解那些以赚钱为目的写博客的博主。</p>
+
+<p>对了差点忘了，我还修改了404页面，哈哈。</p>
+
+<h2 id="comments">Comments</h2>
+
+<p><strong><a href="#121" title="2013-12-31 20:21:04">小蜜蜂</a>:</strong> 英语真好呀你，我看英语文章的时候就是用谷歌翻译的，或者说是有道词典的快速取词，因为单词量有点少啊。。。</p>
+
+<p><strong><a href="#142" title="2014-02-06 00:28:51">关林John</a>:</strong> 你好，很喜欢你的这个主题里的文章列表模块，你对原来的代码做了优化，我不太懂这方面的东西，请问一下可不可以直接把文章列表模块的代码给我一下，我直接贴我博客上，谢谢啦</p>
+
+<p><strong><a href="#143" title="2014-02-06 00:35:04">宋春林</a>:</strong> 代码在此：<a href="https://github.com/songchunlin/My_WP_Theme/blob/master/archive.php">https://github.com/songchunlin/My_WP_Theme/blob/master/archive.php</a></p>
+
+<p><strong><a href="#144" title="2014-02-06 00:36:02">关林John</a>:</strong> 多谢！</p>
+
+<p><strong><a href="#145" title="2014-02-06 00:49:57">关林John</a>:</strong> 我汗，刚试了一下，效果差的好大。。。<a href="http://www.guozhensheng.net/">http://www.guozhensheng.net/</a> 你可以看一下这是怎么回事么。。。多谢。。。</p>
+
+<p><strong><a href="#197" title="2014-03-26 20:13:19">jiushudian.net</a>:</strong> 看了博文，也去衡天注册了主机，上传了WP，可是安装不了啊，域名也解析了，但却打不开页面进行安装。</p>
+
+<p><strong><a href="#68703" title="2016-03-24 22:01:56">limags</a>:</strong> 博主你好，请教一下你是怎么删除文章标题下面的评论的？</p>
+
+<p><strong><a href="#68722" title="2016-03-25 12:04:44">宋春林</a>:</strong> 时间太久忘了。大概是在single或者page页里删除相应的显示评论的代码。</p>
+
+<p><strong><a href="#68724" title="2016-03-25 13:18:22">limags</a>:</strong> 找到了，是在centent.php里面，删除和之间的内容就好了</p>
+
+<p><strong><a href="#68806" title="2016-03-30 10:29:32">宋春林</a>:</strong> 原来如此。</p>
+
+
+</section>
+<section class="meta">
+<span class="author">
+  <a>发表于</a>
+</span>
+<span class="time">
+  
+  <time datetime="2013-12-28">2013-12-28</time>
+</span>
+<br />
+
+
+<span class="categories">
+  分类
+  
+  <a href="http://localhost:4000/categories/#个人生活" title="个人生活">个人生活</a>&nbsp;
+  
+</span>
+
+
+<span class="tags">
+  标签 
+  
+  <a href="http://localhost:4000/tags/#写作" title="写作">写作</a>&nbsp;
+  
+  <a href="http://localhost:4000/tags/#博客" title="博客">博客</a>&nbsp;
+  
+</span>
+
+</section>
+
+<section class="comment">
+
+<div id="ds-thread" class="ds-thread" data-url="/2013/12/modify-blog-theme/" data-title="大修博客主题" data-thread-key="大修博客主题" ></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"songchunlin2016"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>                          
+</section>
+    
+                                  
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    if (e.target.nodeName.toUpperCase() != 'BODY') return;
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://localhost:4000/2013/12/pku-ecology-forum-2013/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://localhost:4000/2013/12/goodbye-2013/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script>
+MathJax.Hub.Config({
+    tex2jax: {
+		skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+	}
+});
+MathJax.Hub.Queue(function() {
+	var all = MathJax.Hub.getAllJax(), i;
+	for(i=0; i < all.length; i += 1) {
+		all[i].SourceElement().parentNode.className += ' has-jax';
+	}
+});
+</script>
+
+        </article>
+          <div><script>
+  (function() {
+    var cx = '006295899379521077361:pwotjnjztng';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-49016899-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    </body>
+    
+<footer><p><small><center>
+              <a href="http://songchunlin.net/en" title="宋春林的英文站点" target="_blank">英文</a> :: 
+              <a href="http://www.zhihu.com/people/songcl" title="宋春林的知乎" target="_blank">知乎</a> :: 
+              <a href="http://weibo.com/songchunlin" title="宋春林的微博" target="_blank">微博</a> :: 
+              <a href="http://www.douban.com/people/iamscl/" title="宋春林的豆瓣" target="_blank">豆瓣</a> :: 
+              <a href="https://500px.com/songchunlin" title="宋春林的摄影相册" target="_blank">500px</a> :: 
+              <a href="https://github.com/songchunlin" title="宋春林的 GitHub" target="_blank">GitHub</a> :: 
+              <a href="https://www.researchgate.net/profile/Chunlin_Song4" title="宋春林的 ResearchGate" target="_blank">ResearchGate</a> ::
+              <a href="http://songchunlin.net/cn/feed/" title="RSS 订阅" target="_blank" >RSS</a>
+            </center></small></p>
+</footer>
+</html>
